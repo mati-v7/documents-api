@@ -62,4 +62,14 @@ class DocumentSchema extends Schema
     {
         return PagePagination::make();
     }
+
+    /**
+     * Determine if the resource is authorizable.
+     *
+     * @return bool
+     */
+    public function authorizable(): bool
+    {
+        return false;
+    }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\DocumentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use LaravelJsonApi\Laravel\Facades\JsonApiRoute;
@@ -13,5 +14,5 @@ Route::get('/user', function (Request $request) {
 JsonApiRoute::server('v1')
     ->prefix('v1')
     ->resources(function (ResourceRegistrar $server) {
-        // ...
+        $server->resource('documents', DocumentController::class);
     });
