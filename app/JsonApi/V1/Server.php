@@ -35,6 +35,7 @@ class Server extends BaseServer
             Documents\DocumentSchema::class,
             Customers\CustomerSchema::class,
             DocumentTypes\DocumentTypeSchema::class,
+            DocumentStatuses\DocumentStatusSchema::class,
         ];
     }
 }
