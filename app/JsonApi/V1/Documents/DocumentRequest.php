@@ -21,7 +21,7 @@ class DocumentRequest extends ResourceRequest
                 'required',
                 'string',
                 'max:255',
-                'unique:documents,number',
+                Rule::unique('documents', 'number')->ignore($this->jsonApi()->route()->resourceId()),
             ],
             'issued_at' => [
                 'nullable',
