@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('document_type_id')->constrained('document_types');
             $table->foreignId('document_status_id')->constrained('document_statuses');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

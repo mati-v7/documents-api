@@ -21,7 +21,7 @@ class DocumentRequest extends ResourceRequest
                 'required',
                 'string',
                 'max:255',
-                Rule::unique('documents', 'number')->ignore($this->jsonApi()->route()->resourceId()),
+                Rule::unique('documents', 'number')->ignore($this->model()?->id),
             ],
             'issued_at' => [
                 'nullable',
@@ -44,6 +44,7 @@ class DocumentRequest extends ResourceRequest
                 'required',
                 JsonApiRule::toOne(),
             ],
+            'deletedAt' => ['nullable', JsonApiRule::dateTime()],
         ];
     }
 }

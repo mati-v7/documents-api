@@ -12,9 +12,11 @@ use LaravelJsonApi\Eloquent\Filters\WhereHas;
 use LaravelJsonApi\Eloquent\Filters\WhereIdIn;
 use LaravelJsonApi\Eloquent\Pagination\PagePagination;
 use LaravelJsonApi\Eloquent\Schema;
+use LaravelJsonApi\Eloquent\SoftDeletes;
 
 class DocumentSchema extends Schema
 {
+    use SoftDeletes;
 
     /**
      * The model the schema corresponds to.
@@ -37,6 +39,7 @@ class DocumentSchema extends Schema
             Fields\Number::make('total')->sortable(),
             Fields\DateTime::make('createdAt')->sortable()->readOnly(),
             Fields\DateTime::make('updatedAt')->sortable()->readOnly(),
+            Fields\SoftDelete::make('deletedAt'),
 
             BelongsTo::make('customer'),
             BelongsTo::make('documentType'),

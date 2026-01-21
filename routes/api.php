@@ -14,5 +14,5 @@ Route::get('/user', function (Request $request) {
 JsonApiRoute::server('v1')
     ->prefix('v1')
     ->resources(function (ResourceRegistrar $server) {
-        $server->resource('documents', DocumentController::class)->only('index', 'show', 'store', 'update');
+        $server->resource('documents', DocumentController::class)->only('index', 'show', 'store', 'update', 'destroy');
     });
