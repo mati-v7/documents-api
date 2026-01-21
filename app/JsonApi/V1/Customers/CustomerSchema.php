@@ -5,6 +5,7 @@ namespace App\JsonApi\V1\Customers;
 use App\Models\Customer;
 use LaravelJsonApi\Eloquent\Contracts\Paginator;
 use LaravelJsonApi\Eloquent\Fields;
+use LaravelJsonApi\Eloquent\Filters\Where;
 use LaravelJsonApi\Eloquent\Filters\WhereIdIn;
 use LaravelJsonApi\Eloquent\Pagination\PagePagination;
 use LaravelJsonApi\Eloquent\Schema;
@@ -45,6 +46,8 @@ class CustomerSchema extends Schema
     {
         return [
             WhereIdIn::make($this),
+            Where::make('tax_id'),
+            Where::make('email'),
         ];
     }
 

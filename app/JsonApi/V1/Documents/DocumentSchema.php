@@ -6,6 +6,9 @@ use App\Models\Document;
 use LaravelJsonApi\Eloquent\Contracts\Paginator;
 use LaravelJsonApi\Eloquent\Fields;
 use LaravelJsonApi\Eloquent\Fields\Relations\BelongsTo;
+use LaravelJsonApi\Eloquent\Fields\Relations\HasMany;
+use LaravelJsonApi\Eloquent\Filters\Where;
+use LaravelJsonApi\Eloquent\Filters\WhereHas;
 use LaravelJsonApi\Eloquent\Filters\WhereIdIn;
 use LaravelJsonApi\Eloquent\Pagination\PagePagination;
 use LaravelJsonApi\Eloquent\Schema;
@@ -49,7 +52,17 @@ class DocumentSchema extends Schema
     public function filters(): array
     {
         return [
+            // Field filters
             WhereIdIn::make($this),
+            Where::make('number'),
+            Where::make('customer_id'),
+            Where::make('document_type_id'),
+            Where::make('document_status_id'),
+
+            // Relation filters
+            WhereHas::make($this, 'customer', 'with-customer'),
+            WhereHas::make($this, 'documentType', 'with-type'),
+            WhereHas::make($this, 'documentStatus', 'with-status'),
         ];
     }
 

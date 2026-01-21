@@ -5,6 +5,7 @@ namespace App\JsonApi\V1\DocumentStatuses;
 use App\Models\DocumentStatus;
 use LaravelJsonApi\Eloquent\Contracts\Paginator;
 use LaravelJsonApi\Eloquent\Fields;
+use LaravelJsonApi\Eloquent\Filters\Where;
 use LaravelJsonApi\Eloquent\Filters\WhereIdIn;
 use LaravelJsonApi\Eloquent\Pagination\PagePagination;
 use LaravelJsonApi\Eloquent\Schema;
@@ -44,6 +45,8 @@ class DocumentStatusSchema extends Schema
     {
         return [
             WhereIdIn::make($this),
+            Where::make('code'),
+            Where::make('description'),
         ];
     }
 
