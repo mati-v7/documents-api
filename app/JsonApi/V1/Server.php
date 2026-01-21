@@ -34,6 +34,7 @@ class Server extends BaseServer
         return [
             Documents\DocumentSchema::class,
             Customers\CustomerSchema::class,
+            DocumentTypes\DocumentTypeSchema::class,
         ];
     }
 }
