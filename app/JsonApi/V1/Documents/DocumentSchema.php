@@ -32,9 +32,9 @@ class DocumentSchema extends Schema
     {
         return [
             Fields\ID::make(),
-            Fields\Str::make('number'),
-            Fields\DateTime::make('issued_at'),
-            Fields\Number::make('total'),
+            Fields\Str::make('number')->sortable(),
+            Fields\DateTime::make('issued_at')->sortable(),
+            Fields\Number::make('total')->sortable(),
             Fields\DateTime::make('createdAt')->sortable()->readOnly(),
             Fields\DateTime::make('updatedAt')->sortable()->readOnly(),
 
